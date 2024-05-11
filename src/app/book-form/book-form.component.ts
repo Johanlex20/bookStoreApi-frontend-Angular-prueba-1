@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookService } from '../book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-form',
@@ -15,7 +17,9 @@ export class BookFormComponent {
     });
 
     constructor(
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      private bookService: BookService,
+      private router: Router
     ){}
 
     controlHasError(control: string, error: string){
@@ -23,7 +27,17 @@ export class BookFormComponent {
     }
 
     save(){
-      console.log('form is valid?', this.form.valid)
-      console.log('form', this.form.value)
+      if(this.form.invalid){
+        return;
+      }
+
+      let book = this.form.value;
+      book.coverPath = 'dummy.jpg';
+      book.filePath = 'dummy.pdf';
+
+      this.bookService.create(book)
+        .subscribe(book =>{
+          this.router.navigate(['/']);
+        });
     }
 }

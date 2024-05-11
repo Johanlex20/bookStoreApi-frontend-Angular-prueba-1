@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BookPage } from './interfaces/book.interface';
+import { Book, BookPage } from './interfaces/book.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,8 @@ export class BookService {
   }
 
 
+  create(book: Book){
+       return this.http.post<Book>('http://localhost:8080/api/admin/books', book)
+  }
 
 }
