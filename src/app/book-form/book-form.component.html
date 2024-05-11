@@ -1,7 +1,10 @@
 <div>
     <h1>Nuevo libro</h1>
 
-    <div class="mt-5 alert alert-danger">
+    <div class="mt-5 alert alert-danger" *ngIf="errors.length">
+        <ul>
+            <li *ngFor="let error of errors"> {{ error }} </li>
+        </ul>
     </div>
 
     <form class="mt-5" [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
@@ -58,7 +61,7 @@
         </div>
 
         <div class="text-end mt-3">
-            <button type="button" class="btn btn-light">
+            <button type="button" class="btn btn-light" routerLink="/">
                 Cancelar
             </button>
             <button class="btn btn-primary ms-2">
