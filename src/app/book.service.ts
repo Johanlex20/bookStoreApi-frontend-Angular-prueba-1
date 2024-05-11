@@ -16,9 +16,11 @@ export class BookService {
     return this.http.get<BookPage>('http://localhost:8080/api/admin/books');
   }
 
-
   create(book: Book){
-       return this.http.post<Book>('http://localhost:8080/api/admin/books', book)
+    return this.http.post<Book>('http://localhost:8080/api/admin/books', book);
   }
 
+  delete(book:Book){ 
+    return this.http.delete(`http://localhost:8080/api/admin/books/${book.id}`);
+  }
 }
