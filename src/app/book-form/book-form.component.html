@@ -1,0 +1,69 @@
+<div>
+    <h1>Nuevo libro</h1>
+
+    <div class="mt-5 alert alert-danger">
+    </div>
+
+    <form class="mt-5" [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
+        <div class="mb-2">
+            <label for="title">Título</label>
+            <input id="title" type="text" placeholder="Título" class="form-control" formControlName="title">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('title','required')">
+                    El Titulo es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('title','minlength')">
+                    Titulo debe tener almenos 3 caracteres
+                </ng-container>
+                <ng-container *ngIf="controlHasError('title','maxlength')">
+                    Titulo debe tener maximo 100 caracteres
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="slug">Slug</label>
+            <input id="slug" type="text" placeholder="Slug" class="form-control" formControlName="slug">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('slug','required')">
+                    Slug es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('slug','pattern')">
+                    Slug debe tener un formato valido
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" placeholder="Descripción" class="form-control" formControlName="desc"></textarea>
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('desc','required')">
+                    La Descripción es obligatoria
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="precio">Precio</label>
+            <input id="precio" type="number" step="0.01" placeholder="Precio" class="form-control" formControlName="price">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('price','required')">
+                    Precio es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('price','min')">
+                    El Precio minimo debe ser '$0'
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <button type="button" class="btn btn-light">
+                Cancelar
+            </button>
+            <button class="btn btn-primary ms-2">
+                Crear libro
+            </button>
+        </div>
+    </form>
+</div>
