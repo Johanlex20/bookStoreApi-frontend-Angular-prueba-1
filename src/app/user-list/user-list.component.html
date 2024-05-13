@@ -1,0 +1,47 @@
+<h1>Lista de Usuarios</h1>
+
+<div class="text-end">
+    <button class="btn btn-primary" routerLink="/new/user">
+        Nuevo Usuario
+    </button>
+</div>
+
+<table class="table table-hover mt-5">
+    <thead>
+        <tr >
+            <th>NOMBRE</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+            <th>ROLE</th>
+            <th>F.CREACIÓN</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td class="fw-bold">
+                {{ user.fullName }}
+            </td>
+            <td>
+                {{ user.email }}
+            </td>
+            <td>
+                {{ user.password }}
+            </td>
+            <td>
+                {{ user.role }}
+            </td>
+            <td>
+                {{ user.createdAt | date: 'dd/MM/yyyy' }}
+            </td>
+            <td>
+                <a href="#">
+                    Editar
+                </a>
+                <a href="#" class="ms-2" (click)="deleteUser(user)">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

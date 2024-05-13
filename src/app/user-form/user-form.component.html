@@ -1,0 +1,91 @@
+<div>
+    <h1>Nuevo Usuario</h1>
+
+    <div class="mt-5 alert alert-danger" *ngIf="errors.length">
+        <ul>
+            <li *ngFor="let error of errors"> {{ error }} </li>
+        </ul>
+    </div>
+
+    <form class="mt-5" [formGroup]="form" autocomplete="off" (ngSubmit)="save()">
+        <div class="mb-2">
+            <label for="firstName">Nombre</label>
+            <input id="firstName" type="text" placeholder="Nombre" class="form-control" formControlName="firstName">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('firstName','required')">
+                    El Nombre es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('firstName', 'minlength')">
+                    El Nombre debe tener minimo 3 caracteres
+                </ng-container>
+                <ng-container *ngIf="controlHasError('firstName','maxlength')">
+                    El Nombre pude tener maximo 25 caracteres
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="lastName">Apellido</label>
+            <input id="lastName" type="text" placeholder="Apellido" class="form-control" formControlName="lastName">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('lastName', 'required')">
+                    El Apellido es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('lastName', 'minlength')">
+                    El Apellido debe tener minimo 3 caracteres
+                </ng-container>
+                <ng-container *ngIf="controlHasError('lastName', 'maxlength')">
+                    El Apellido puede tener maximo 25 caracteres
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="descripcion">Email</label>
+            <input id="email" type="text" placeholder="email" class="form-control" formControlName="email">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('email', 'required')">
+                    El Email es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('email', 'email')">
+                    El Email debe tener un formato valido
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="password">Password</label>
+            <input id="password" type="text" placeholder="Password" class="form-control" formControlName="password">
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('password','required')">
+                    El Password es obligatorio
+                </ng-container>
+                <ng-container *ngIf="controlHasError('password','pattern')">
+                    El Password debe tener un formato valido
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="role">Role</label>
+            <select id="role" placeholder="Role" class="form-control" formControlName="role">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+            <div class="invalid-feedback d-block">
+                <ng-container *ngIf="controlHasError('role','required')">
+                    El Role es obligatorio
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <button class="btn btn-light" routerLink="/users">
+                Cancelar
+            </button>
+            <button class="btn btn-primary ms-2">
+                Crear Usuario
+            </button>
+        </div>
+    </form>
+</div>

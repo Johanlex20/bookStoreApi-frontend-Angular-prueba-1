@@ -8,12 +8,16 @@ import { BookListComponent } from './book-list/book-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookFormComponent } from './book-form/book-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
-    BookFormComponent
+    BookFormComponent,
+    UserListComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

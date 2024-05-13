@@ -1,5 +1,7 @@
-<div>
-    <h1>Nuevo libro</h1>
+<div *ngIf="form">
+    <h1>
+        {{  book ? 'Editar': 'Nuevo' }} libro
+    </h1>
 
     <div class="mt-5 alert alert-danger" *ngIf="errors.length">
         <ul>
@@ -65,7 +67,7 @@
                 Cancelar
             </button>
             <button class="btn btn-primary ms-2">
-                Crear libro
+                {{ book ? 'Actualizar' : 'Crear' }} libro
             </button>
         </div>
     </form>

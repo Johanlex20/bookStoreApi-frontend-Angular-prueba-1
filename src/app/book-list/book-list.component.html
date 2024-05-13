@@ -11,7 +11,7 @@
         <tr >
             <th>Libro</th>
             <th>PRECIO</th>
-            <th>F. CREACION</th>
+            <th>F.CREACIÓN</th>
             <th></th>
         </tr>
     </thead>
@@ -32,7 +32,7 @@
                 {{ book.createdAt | date: 'dd/MM/yyyy' }}
             </td>
             <td>
-                <a href="#">
+                <a [routerLink]="[book.id, 'edit']">
                     Editar
                 </a>
                 <a href="#" class="ms-2" (click)="deleteBook(book)">

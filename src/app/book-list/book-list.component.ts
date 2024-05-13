@@ -8,6 +8,7 @@ import { Book, BookPage } from '../interfaces/book.interface';
   styleUrls: []
 })
 export class BookListComponent implements OnInit {
+  
   books? :Book[];
 
   constructor(
