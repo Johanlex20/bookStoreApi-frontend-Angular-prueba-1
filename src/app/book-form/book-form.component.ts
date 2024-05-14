@@ -36,6 +36,8 @@ export class BookFormComponent implements OnInit{
             slug:[book.slug, [Validators.required, Validators.pattern('[A-Za-z0-9-]+')]],
             desc:[book.desc, [Validators.required, Validators.maxLength(100)]],
             price:[book.price, [Validators.required, Validators.min(0)]],
+            coverPath:[ book.coverPath, [Validators.required]],
+            filePath:[book.filePath, [Validators.required]]
           });
         });
        }else{
@@ -44,6 +46,8 @@ export class BookFormComponent implements OnInit{
             slug:[, [Validators.required, Validators.pattern('[A-Za-z0-9-]+')]],
             desc:[, [Validators.required]],
             price:[, [Validators.required, Validators.min(0)]],
+            coverPath:[, [Validators.required]],
+            filePath:[, [Validators.required]]
           });
         }
     }
@@ -52,14 +56,28 @@ export class BookFormComponent implements OnInit{
       return this.form!.controls[control].hasError(error)
     }
 
+    uploadFile(event: any, control: string){
+      const file = event.target.files[0];
+
+      if(file){
+        const formData = new FormData();
+
+        formData.append('file', file);
+
+        this.bookService.uploadFile(formData)
+          .subscribe((response : any)=>{
+            this.form!.controls[control].setValue(response.path);
+          });
+      }
+
+    }
+
     save(){
       if(this.form!.invalid){
         return;
       }
 
       let book = this.form!.value;
-      book.coverPath = 'dummy.jpg';
-      book.filePath = 'dummy.pdf';
 
       let request;
 

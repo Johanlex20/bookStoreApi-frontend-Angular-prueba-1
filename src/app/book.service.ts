@@ -32,4 +32,8 @@ export class BookService {
   delete(book:Book){ 
     return this.http.delete(`http://localhost:8080/api/admin/books/${book.id}`);
   }
+
+  uploadFile(formData: FormData){
+    return this.http.post('http://localhost:8080/api/media/upload',formData);
+  }
 }
