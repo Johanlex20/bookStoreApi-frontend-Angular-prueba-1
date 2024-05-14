@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Book, BookPage } from './interfaces/book.interface';
+import { Book, BookPage } from '../../interfaces/book.interface';
 import { tick } from '@angular/core/testing';
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BookService } from '../book.service';
+import { BookService } from '../../services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from '../interfaces/book.interface';
+import { Book } from '../../../interfaces/book.interface';
 
 @Component({
   selector: 'app-book-form',
@@ -92,7 +92,7 @@ export class BookFormComponent implements OnInit{
       request
         .subscribe({
           next:book =>{
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin/books']);
           },
 
           error: error =>{

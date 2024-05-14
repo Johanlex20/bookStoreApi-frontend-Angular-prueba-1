@@ -1,7 +1,7 @@
 <h1>Lista de libros</h1>
 
 <div class="text-end">
-    <button class="btn btn-primary" routerLink="/new">
+    <button class="btn btn-primary" routerLink="/admin/books/new">
         Nuevo libro
     </button>
 </div>
@@ -32,7 +32,7 @@
                 {{ book.createdAt | date: 'dd/MM/yyyy' }}
             </td>
             <td>
-                <a [routerLink]="[book.id, 'edit']">
+                <a [routerLink]="['/admin/books', book.id, 'edit']">
                     Editar
                 </a>
                 <a href="#" class="ms-2" (click)="deleteBook(book)">
