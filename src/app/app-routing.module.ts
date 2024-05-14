@@ -15,8 +15,8 @@ const routes: Routes = [
     component: BookFormComponent
   },
   {
-    path:':id/edit',
-    component:BookFormComponent
+    path: ':id/edit',
+    component: BookFormComponent
   },
   {
     path: 'users',
@@ -24,6 +24,10 @@ const routes: Routes = [
   },
   {
     path: 'new/user',
+    component: UserFormComponent
+  },
+  {
+    path: 'users/:id/edit',
     component: UserFormComponent
   }
 ];

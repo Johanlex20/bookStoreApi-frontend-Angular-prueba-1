@@ -1,5 +1,7 @@
-<div>
-    <h1>Nuevo Usuario</h1>
+<div *ngIf="form">
+    <h1>
+        {{ user ? 'Editar ': 'Crear ' }} Usuario
+    </h1>
 
     <div class="mt-5 alert alert-danger" *ngIf="errors.length">
         <ul>
@@ -84,7 +86,7 @@
                 Cancelar
             </button>
             <button class="btn btn-primary ms-2">
-                Crear Usuario
+                {{ user ? 'Actualizar ': 'Crear ' }} Usuario
             </button>
         </div>
     </form>

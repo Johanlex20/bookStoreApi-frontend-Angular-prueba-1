@@ -46,6 +46,9 @@
                 <ng-container *ngIf="controlHasError('desc','required')">
                     La Descripción es obligatoria
                 </ng-container>
+                <ng-container *ngIf="controlHasError('desc','maxlength')">
+                    La Descripción puede tener maximo 100 caracteres
+                </ng-container>
             </div>
         </div>
 

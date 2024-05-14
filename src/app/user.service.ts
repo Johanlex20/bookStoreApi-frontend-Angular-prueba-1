@@ -19,6 +19,14 @@ export class UserService {
     return this.http.post<User>('http://localhost:8080/api/admin/users', user);
   }
 
+  get(id: number){
+    return this.http.get<User>(`http://localhost:8080/api/admin/users/${id}`);
+  }
+
+  update(id: number, user:User){
+    return this.http.put<User>(`http://localhost:8080/api/admin/users/${id}`, user);
+  }
+
   delete(user:User){
     return this.http.delete(`http://localhost:8080/api/admin/users/${user.id}`);
   }

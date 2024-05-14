@@ -34,7 +34,7 @@ export class BookFormComponent implements OnInit{
           this.form = this.fb.group({
             title:[book.title, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
             slug:[book.slug, [Validators.required, Validators.pattern('[A-Za-z0-9-]+')]],
-            desc:[book.desc, [Validators.required]],
+            desc:[book.desc, [Validators.required, Validators.maxLength(100)]],
             price:[book.price, [Validators.required, Validators.min(0)]],
           });
         });
