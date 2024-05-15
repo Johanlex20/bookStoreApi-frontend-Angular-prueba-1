@@ -53,7 +53,7 @@ export class BookFormComponent implements OnInit{
     }
 
     controlHasError(control: string, error: string){
-      return this.form!.controls[control].hasError(error)
+      return this.form!.controls[control].hasError(error) && this.form!.controls[control].touched;
     }
 
     uploadFile(event: any, control: string){
@@ -74,6 +74,7 @@ export class BookFormComponent implements OnInit{
 
     save(){
       if(this.form!.invalid){
+        this.form!.markAllAsTouched();
         return;
       }
 

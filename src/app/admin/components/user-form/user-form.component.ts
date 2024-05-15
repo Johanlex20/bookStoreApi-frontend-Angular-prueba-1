@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit {
       .subscribe({
 
         next: user => {
-          this.router.navigate(['/users'])
+          this.router.navigate(['/admin/users'])
         },
 
         error: error => {
