@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { Book, BookPage } from '../../../interfaces/book.interface';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-book-list',
@@ -9,7 +10,8 @@ import { Book, BookPage } from '../../../interfaces/book.interface';
 })
 export class BookListComponent implements OnInit {
   
-  books? :Book[];
+  bookPage? :BookPage;
+  displayedColums = ['title', 'price', 'createdAt', 'actions'];
 
   constructor(
     private bookService: BookService
@@ -22,7 +24,7 @@ export class BookListComponent implements OnInit {
   loadBooks(){
     this.bookService.paginate()
     .subscribe(bookPage => {
-      this.books = bookPage.content;
+      this.bookPage = bookPage;
     });
   }
 
@@ -33,6 +35,10 @@ export class BookListComponent implements OnInit {
           this.loadBooks();
       });
     }
+  }
+
+  paginateBooks(event: PageEvent){
+    console.log('event', event);
   }
 
 }

@@ -1,44 +1,61 @@
 <h1>Lista de libros</h1>
 
 <div class="text-end">
-    <button class="btn btn-primary" routerLink="/admin/books/new">
+    <button mat-raised-button color="primary" routerLink="/admin/books/new">
         Nuevo libro
     </button>
 </div>
 
-<table class="table table-hover mt-5">
-    <thead>
-        <tr >
-            <th>Libro</th>
-            <th>PRECIO</th>
-            <th>F.CREACIÓN</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of books">
-            <td>
-                <div class="fw-bold">
-                   {{ book.title }}
+<div *ngIf="bookPage" class="mt-5">
+    <table mat-table [dataSource]="bookPage.content">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Libro</th>
+            <td mat-cell *matCellDef="let book">
+                <div class="d-flex gap-2">
+                    <img [src]="'http://localhost:8080/api/media/' + book.coverPath" alt="" class="mw-96px">
+                    <div>
+                        <div class="fw-bold">
+                            {{ book.title }}
+                        </div>
+                        <p>
+                            {{ book.desc }}
+                        </p>
+                    </div>
                 </div>
-                <p>
-                    {{ book.desc }}
-                </p>
             </td>
-            <td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Precio</th>
+            <td mat-cell *matCellDef="let book">
                 {{ book.price | currency }}
             </td>
-            <td>
-                {{ book.createdAt | date: 'dd/MM/yyyy' }}
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef>F. creación</th>
+            <td mat-cell *matCellDef="let book">
+                {{ book.createdAt | date:'dd/MM/yyyy' }}
             </td>
-            <td>
-                <a [routerLink]="['/admin/books', book.id, 'edit']">
-                    Editar
-                </a>
-                <a href="#" class="ms-2" (click)="deleteBook(book)">
-                    Eliminar
-                </a>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let book">
+                <div class="d-flex flex-nowrap">
+                    <button mat-icon-button [routerLink]="['/admin/books', book.id, 'edit']" color="primary"
+                        matTooltip="Editar libro">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="ms-2" (click)="deleteBook(book)" color="warn"
+                        matTooltip="Eliminar libro">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
             </td>
-        </tr>
-    </tbody>
-</table>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColums"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColums;"></tr>
+    </table>
+</div>
