@@ -10,10 +10,10 @@
     </div>
 
     <form class="mt-5" [formGroup]="form" autocomplete="off" (ngSubmit)="save()">
-        <div class="mb-2">
-            <label for="firstName">Nombre</label>
-            <input id="firstName" type="text" placeholder="Nombre" class="form-control" formControlName="firstName">
-            <div class="invalid-feedback d-block">
+        <mat-form-field class="mb-3 w-100" appearance="outline">
+            <mat-label for="firstName">Nombre</mat-label>
+            <input matInput id="firstName" type="text" placeholder="Nombre" formControlName="firstName">
+            <mat-error>
                 <ng-container *ngIf="controlHasError('firstName','required')">
                     El Nombre es obligatorio
                 </ng-container>
@@ -23,13 +23,13 @@
                 <ng-container *ngIf="controlHasError('firstName','maxlength')">
                     El Nombre pude tener maximo 25 caracteres
                 </ng-container>
-            </div>
-        </div>
+            </mat-error>
+        </mat-form-field>
 
-        <div class="mb-2">
-            <label for="lastName">Apellido</label>
-            <input id="lastName" type="text" placeholder="Apellido" class="form-control" formControlName="lastName">
-            <div class="invalid-feedback d-block">
+        <mat-form-field class="mb-3 w-100" appearance="outline">
+            <mat-label for="lastName">Apellido</mat-label>
+            <input matInput id="lastName" type="text" placeholder="Apellido" formControlName="lastName">
+            <mat-error>
                 <ng-container *ngIf="controlHasError('lastName', 'required')">
                     El Apellido es obligatorio
                 </ng-container>
@@ -39,53 +39,53 @@
                 <ng-container *ngIf="controlHasError('lastName', 'maxlength')">
                     El Apellido puede tener maximo 25 caracteres
                 </ng-container>
-            </div>
-        </div>
+            </mat-error>
+        </mat-form-field>
 
-        <div class="mb-2">
-            <label for="descripcion">Email</label>
-            <input id="email" type="text" placeholder="email" class="form-control" formControlName="email">
-            <div class="invalid-feedback d-block">
+        <mat-form-field class="mb-2 w-100" appearance="outline">
+            <mat-label for="descripcion">Email</mat-label>
+            <input matInput id="email" type="text" placeholder="email" formControlName="email">
+            <mat-error>
                 <ng-container *ngIf="controlHasError('email', 'required')">
                     El Email es obligatorio
                 </ng-container>
                 <ng-container *ngIf="controlHasError('email', 'email')">
                     El Email debe tener un formato valido
                 </ng-container>
-            </div>
-        </div>
+            </mat-error>
+        </mat-form-field>
 
-        <div class="mb-2">
-            <label for="password">Password</label>
-            <input id="password" type="text" placeholder="Password" class="form-control" formControlName="password">
-            <div class="invalid-feedback d-block">
+        <mat-form-field class="mb-3 w-100" appearance="outline">
+            <mat-label for="password">Password</mat-label>
+            <input matInput id="password" type="text" placeholder="Password" formControlName="password">
+            <mat-error>
                 <ng-container *ngIf="controlHasError('password','required')">
                     El Password es obligatorio
                 </ng-container>
                 <ng-container *ngIf="controlHasError('password','pattern')">
                     El Password debe tener un formato valido
                 </ng-container>
-            </div>
-        </div>
+            </mat-error>
+        </mat-form-field>
 
-        <div class="mb-2">
-            <label for="role">Role</label>
-            <select id="role" placeholder="Role" class="form-control" formControlName="role">
-                <option value="USER">USER</option>
-                <option value="ADMIN">ADMIN</option>
-            </select>
-            <div class="invalid-feedback d-block">
+        <mat-form-field class="mb-3 w-100" appearance="outline">
+            <mat-label for="role">Role</mat-label>
+            <mat-select id="role" placeholder="Role" formControlName="role">
+                <mat-option value="USER">USER</mat-option>
+                <mat-option value="ADMIN">ADMIN</mat-option>
+            </mat-select>
+            <mat-error>
                 <ng-container *ngIf="controlHasError('role','required')">
                     El Role es obligatorio
                 </ng-container>
-            </div>
-        </div>
+            </mat-error>
+        </mat-form-field>
 
         <div class="text-end">
-            <button class="btn btn-light" routerLink="/admin/users">
+            <button mat-raised-button routerLink="/admin/users">
                 Cancelar
             </button>
-            <button class="btn btn-primary ms-2">
+            <button class="ms-2" mat-raised-button color="primary">
                 {{ user ? 'Actualizar ': 'Crear ' }} Usuario
             </button>
         </div>

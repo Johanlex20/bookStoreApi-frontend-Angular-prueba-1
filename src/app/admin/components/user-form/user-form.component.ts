@@ -53,11 +53,12 @@ export class UserFormComponent implements OnInit {
   }
 
   controlHasError(control: string, error: string) {
-    return this.form!.controls[control].hasError(error);
+    return this.form!.controls[control].hasError(error) && this.form!.controls[control].hasError(error);
   }
 
   save() {
     if (this.form!.invalid) {
+      this.form!.markAllAsTouched();
       return;
     }
 
