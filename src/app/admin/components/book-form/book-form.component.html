@@ -100,7 +100,7 @@
            <div class="col-md-4 text-center">
                 <div *ngIf="form.controls['coverPath'].value; else noCoverPathMessage" >
                     <div>Portada</div>
-                    <img [src]=" 'http://localhost:8080/api/media/' + form.controls['coverPath'].value" alt="">
+                    <img [src]="form.controls['coverPath'].value | apiImg" alt="">
               </div>
               <ng-template #noCoverPathMessage>
                     Sin Portada

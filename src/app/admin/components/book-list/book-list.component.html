@@ -12,7 +12,7 @@
             <th mat-header-cell *matHeaderCellDef>Libro</th>
             <td mat-cell *matCellDef="let book">
                 <div class="d-flex gap-2">
-                    <img [src]="'http://localhost:8080/api/media/' + book.coverPath" alt="" class="mw-96px">
+                    <img [src]="book.coverPath | apiImg" alt="" class="mw-96px">
                     <div>
                         <div class="fw-bold">
                             {{ book.title }}
