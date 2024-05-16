@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, BookPage } from '../../interfaces/book.interface';
 import { tick } from '@angular/core/testing';
@@ -14,8 +14,13 @@ export class BookService {
   ) {}
 
 
-  paginate(){
-    return this.http.get<BookPage>(`${environment.apiBase}/admin/books`);
+  paginate(size: number = 5, page: number = 0,){
+    let params = new HttpParams();
+    params = params .append('size',size);
+    params = params .append('page',page);
+    params = params .append('sort','createdAt,desc');
+
+    return this.http.get<BookPage>(`${environment.apiBase}/admin/books`, { params });
   }
 
   create(book: Book){

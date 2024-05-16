@@ -58,4 +58,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColums"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColums;"></tr>
     </table>
+
+
+    <mat-paginator [length]="bookPage.totalElements" [pageSize]="bookPage.size" (page)="paginateBooks($event)" [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    >
+</mat-paginator>
+
 </div>

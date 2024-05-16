@@ -38,7 +38,11 @@ export class BookListComponent implements OnInit {
   }
 
   paginateBooks(event: PageEvent){
-    console.log('event', event);
+    const  {pageIndex, pageSize }= event;
+    this.bookService.paginate(pageSize, pageIndex)
+      .subscribe(bookPage => {
+        this.bookPage = bookPage;
+      });
   }
 
 }
