@@ -8,6 +8,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { LayoutComponent } from './components/layout/layout.component';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     BookListComponent,
     BookFormComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,
