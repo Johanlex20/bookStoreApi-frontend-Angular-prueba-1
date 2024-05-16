@@ -14,7 +14,7 @@
             <form class="mt-5" [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
                 <mat-form-field class="mb-3 w-100" appearance="outline">
                     <mat-label for="title">Título</mat-label>
-                    <input matInput id="title" type="text" placeholder="Título" formControlName="title">
+                    <input matInput id="title" type="text" placeholder="Título" formControlName="title" (keyup)="generateSlug()">
                     <mat-error>
                         <ng-container *ngIf="controlHasError('title','required')">
                             El Titulo es obligatorio
