@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { environment } from 'src/environments/enviroment';
 
 @Pipe({
   name: 'apiImg'
@@ -6,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ApiImgPipe implements PipeTransform {
 
   transform(value: string): string {
-    return `http://localhost:8080/api/media/${value}`;
+    return `${environment.apiBase}/media/${value}`;
   }
 
 }
