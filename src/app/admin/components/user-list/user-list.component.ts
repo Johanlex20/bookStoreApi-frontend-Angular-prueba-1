@@ -3,6 +3,7 @@ import { User, UserPage } from '../../../interfaces/user.interface';
 import { UserService, } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
+import { BookPage } from '../../../interfaces/book.interface';
 
 @Component({
   selector: 'app-user-list',
@@ -41,7 +42,11 @@ export class UserListComponent implements OnInit {
   }
 
   paginateUsers(event: PageEvent){
-    console.log('event', event);
+    const { pageIndex, pageSize } = event;
+    this.userService.paginate(pageSize, pageIndex)
+      .subscribe(userPage =>{
+        this.userPage = userPage;
+      })
   }
 
 
