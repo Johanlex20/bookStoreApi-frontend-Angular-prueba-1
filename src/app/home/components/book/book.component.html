@@ -1,0 +1,33 @@
+<div class="container" *ngIf="book">
+    <div class="row">
+        <div class="col-md-6 px-5">
+            <img [src]="book.coverPath! | apiImg" [alt]="book.title">
+        </div>
+        <div class="col-md-6">
+            <h1 class="fw-bold">{{ book.title }} </h1>
+            <p>
+                {{ book.desc }}
+            </p>
+
+            <div>
+                <span class="fw-bold">Formato disponible:</span>
+                <span class="ms-1">PDF</span>
+            </div>
+
+            <div class="mt-2">
+                <span class="fw-bold">Precio:</span>
+                <span class="ms-1 fw-bold text-danger display-5">
+                    {{ book.price | currency }}
+                </span>
+            </div>
+            <div class="mt-5">
+                <button mat-raised-button color="primary">
+                   <mat-icon>add_shopping_cart</mat-icon> Agregar al carrito
+                </button>
+                <button mat-raised-button color="warn">
+                    <mat-icon>remove_shopping_cart</mat-icon> Remover del carrito
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

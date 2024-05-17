@@ -25,4 +25,8 @@ export class HomeService {
     return this.http.get<BookPage>(`${environment.apiBase}/books`, { params });
   }
 
+  getBook(slug:string){
+    return this.http.get<Book>(`${environment.apiBase}/books/${slug}`);
+  }
+
 }

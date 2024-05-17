@@ -6,13 +6,15 @@ import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { BooksComponent } from './components/books/books.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { BookComponent } from './components/book/book.component';
 
 
 
 @NgModule({
   declarations: [
     IndexComponent,
-    BooksComponent
+    BooksComponent,
+    BookComponent
   ],
   imports: [
     CommonModule,
