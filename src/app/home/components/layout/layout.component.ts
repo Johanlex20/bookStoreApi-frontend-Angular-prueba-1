@@ -12,4 +12,8 @@ export class LayoutComponent {
     private cartService:CartService
   ){}
 
+  get items(){
+    return this.cartService.Items;
+  }
+
 }

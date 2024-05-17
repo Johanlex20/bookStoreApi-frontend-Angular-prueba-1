@@ -1,4 +1,4 @@
-<mat-toolbar >
+<mat-toolbar>
     <span>Mi tienda Online</span>
 
     <button mat-button routerLink="/" class="ms-3">
@@ -14,6 +14,39 @@
     </button>
 
     <span class="spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="cartMenu" aria-label="Example icon-button with a menu">
+        <mat-icon>shopping_cart</mat-icon>
+    </button>
+
+    <mat-menu #cartMenu="matMenu">
+        <ng-container *ngIf="items.length > 0; else noItmes">
+            <button mat-menu-item *ngFor="let book of items" class="cart-items">
+                <div class="d-flex gap-2">
+                    <img [src]="book.coverPath! | apiImg" alt="" class="mw-64px">
+                    <div class="info">
+                        <div class="fw-bold mb-1">
+                            {{ book.title }}
+                        </div>
+                        <div>
+                            {{ book.price | currency }}
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+            <button mat-menu-item class="justify-content-center" routerLink="/cart">
+                Ir al carrito
+            </button>
+
+        </ng-container>
+
+        <ng-template #noItmes>
+            <button mat-menu-item class="justify-content-center">
+                El carrito está vacío 
+            </button>
+        </ng-template>
+    </mat-menu>
 
 
     <button mat-button>

@@ -18,6 +18,12 @@ body {
     max-height: 96px;
 }
 
+.mw-64px {
+    max-width: 64px;
+    max-height: 64px;
+}
+
+
 .spacer {
     flex: 1 1 auto;
 }
