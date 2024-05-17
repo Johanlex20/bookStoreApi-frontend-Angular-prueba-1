@@ -9,12 +9,12 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" class="w-100" *ngIf="true; else removeButton">
+      <button mat-raised-button color="primary"  class="w-100" *ngIf="!bookIsInCart(); else removeButton" (click)="addBookToCart()">
         <mat-icon>add_shopping_cart</mat-icon> Agregar la carrito
       </button>
 
       <ng-template #removeButton>
-        <button mat-raised-button color="warm" class="w-100">
+        <button mat-raised-button color="warn" class="w-100" (click)="removeBookFromCart()">
             <mat-icon>remove_shopping_cart</mat-icon> Remover del carrito
          </button>
       </ng-template>
