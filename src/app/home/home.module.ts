@@ -9,6 +9,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BookComponent } from './components/book/book.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { BookCardComponent } from './components/shared/book-card/book-card.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -18,7 +19,8 @@ import { BookCardComponent } from './components/shared/book-card/book-card.compo
     BooksComponent,
     BookComponent,
     LayoutComponent,
-    BookCardComponent
+    BookCardComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

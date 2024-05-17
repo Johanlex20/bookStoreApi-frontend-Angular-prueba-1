@@ -4,6 +4,7 @@ import { IndexComponent } from './components/index/index.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookComponent } from './components/book/book.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path:'books/:slug',
         component: BookComponent
+      },
+      {
+        path:'cart',
+        component: CartComponent
       }
     ]
   }
