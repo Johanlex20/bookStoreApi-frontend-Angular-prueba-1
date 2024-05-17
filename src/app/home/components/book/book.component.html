@@ -1,7 +1,7 @@
 <div class="container" *ngIf="book">
     <div class="row">
         <div class="col-md-6 px-5">
-            <img [src]="book.coverPath! | apiImg" [alt]="book.title">
+            <img [src]="book.coverPath! | apiImg" [alt]="book.title" class="w-100">
         </div>
         <div class="col-md-6">
             <h1 class="fw-bold">{{ book.title }} </h1>
@@ -21,12 +21,14 @@
                 </span>
             </div>
             <div class="mt-5">
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" *ngIf="!bookIsInCart(); else removeButton" (click)="addBookToCart()">
                    <mat-icon>add_shopping_cart</mat-icon> Agregar al carrito
                 </button>
-                <button mat-raised-button color="warn">
-                    <mat-icon>remove_shopping_cart</mat-icon> Remover del carrito
-                </button>
+                <ng-template #removeButton>
+                    <button mat-raised-button color="warn" (click)="removeBookFromCart()">
+                        <mat-icon>remove_shopping_cart</mat-icon> Remover del carrito
+                    </button>
+                </ng-template>      
             </div>
         </div>
     </div>
