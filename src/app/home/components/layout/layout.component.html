@@ -1,0 +1,25 @@
+<mat-toolbar >
+    <span>Mi tienda Online</span>
+
+    <button mat-button routerLink="/" class="ms-3">
+        Inicio
+    </button>
+
+    <button mat-button routerLink="/books" class="ms-3">
+        Libros
+    </button>
+
+    <button mat-button routerLink="/admin/books" class="ms-3">
+        Administración
+    </button>
+
+    <span class="spacer"></span>
+
+
+    <button mat-button>
+        <mat-icon>account_circle</mat-icon>
+    </button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
