@@ -4,29 +4,9 @@
     <div infiniteScroll (scrolled)="loadMoreBooks()">
         <div class="row">
             <div class="col-md-4 mb-3" *ngFor="let book of books">
-                <mat-card class="book-card">
-                    <img mat-card-image [src]="book.coverPath! | apiImg" [alt]="book.title">
-                    
-                    <mat-card-content>
-                      <a class="h4" [routerLink]="['/books', book.slug]"> {{ book.title }} </a>
-                      <p>
-                        {{ book.desc | slice:0:100 }}... <!-- cantidad de carcteres en la descripcion -->
-                      </p>
-                    </mat-card-content>
-    
-                    <mat-card-actions>
-                      <button mat-raised-button color="primary" class="w-100" *ngIf="true; else removeButton">
-                        <mat-icon>add_shopping_cart</mat-icon> Agregar la carrito
-                      </button>
-    
-                      <ng-template #removeButton>
-                        <button mat-raised-button color="warm" class="w-100">
-                            <mat-icon>remove_shopping_cart</mat-icon> Remover del carrito
-                         </button>
-                      </ng-template>
-                      
-                    </mat-card-actions>
-                  </mat-card>
+
+              <app-book-card [book]="book"></app-book-card>
+
             </div>
         </div>
     </div>
