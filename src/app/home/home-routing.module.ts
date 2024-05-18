@@ -5,6 +5,7 @@ import { BooksComponent } from './components/books/books.component';
 import { BookComponent } from './components/book/book.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path:'cart',
         component: CartComponent
+      },
+      {
+        path:'orders/:id',
+        component: OrderComponent
       }
     ]
   }

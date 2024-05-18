@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, BookPage } from 'src/app/interfaces/book.interface';
 import { environment } from 'src/environments/enviroment';
+import { SalesOrder } from '../interfaces/order.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,16 @@ export class HomeService {
 
   getBook(slug:string){
     return this.http.get<Book>(`${environment.apiBase}/books/${slug}`);
+  }
+
+  getOrder(id:number){
+    return this.http.get<SalesOrder>(`${environment.apiBase}/orders/${id}`);  
+  }
+
+  downLoadBookSalesItem(orderId: number, itemId: number){
+    return this.http.get(`${environment.apiBase}/orders/${orderId}/items/${itemId}/book/download`, {
+      responseType: 'blob'
+    });
   }
 
 }

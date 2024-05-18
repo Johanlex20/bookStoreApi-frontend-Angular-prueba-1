@@ -10,6 +10,7 @@ import { BookComponent } from './components/book/book.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { BookCardComponent } from './components/shared/book-card/book-card.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 
@@ -20,7 +21,8 @@ import { CartComponent } from './components/cart/cart.component';
     BookComponent,
     LayoutComponent,
     BookCardComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,
