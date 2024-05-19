@@ -4,3 +4,16 @@ export interface AuthRequest{
     password?:string;
 }
 
+
+export interface AuthResponse{
+    token: string;
+    user: Profile;
+}
+
+export interface Profile{
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    email: string;
+    role: 'USER' | 'ADMIN';
+}
