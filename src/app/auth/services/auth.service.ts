@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthRequest, AuthResponse } from '../interfaces/auth.interface';
+import { AuthRequest, AuthResponse, Profile, SignupRequest } from '../interfaces/auth.interface';
 import { environment } from 'src/environments/enviroment';
 import { map, throwIfEmpty } from 'rxjs';
 
@@ -49,6 +49,10 @@ export class AuthService {
   logout(){
     localStorage.removeItem(authKey);
     this._auth = undefined;
+  }
+
+  signup(signupRequest: SignupRequest) {
+    return this.http.post<Profile>(`${environment.apiBase}/singup`, signupRequest);
   }
 
 }
