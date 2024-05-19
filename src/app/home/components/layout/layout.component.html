@@ -9,7 +9,7 @@
         Libros
     </button>
 
-    <button mat-button routerLink="/admin/books" class="ms-3">
+    <button mat-button routerLink="/admin/books" class="ms-3" *ngIf="user?.role === 'ADMIN'">
         Administración
     </button>
 
@@ -49,9 +49,28 @@
     </mat-menu>
 
 
-    <button mat-button>
-        <mat-icon>account_circle</mat-icon>
-    </button>
+    <ng-container *ngIf="user; else authButtons">
+        <button mat-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>account_circle</mat-icon> {{ user.firstName }}
+        </button>
+
+        <mat-menu #userMenu>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon> Cerrar sesión
+            </button>
+        </mat-menu>
+    </ng-container>
+    
+    <ng-template #authButtons>
+        <button mat-button class="ms-2" routerLink="/auth/login">
+            Iniciar sesión
+        </button>
+        <button mat-raised-button color="primary" class="ms-2" routerLink="/auth/singup">
+            Registarme
+        </button>
+    </ng-template>
+    
+    
 
 </mat-toolbar>
 
