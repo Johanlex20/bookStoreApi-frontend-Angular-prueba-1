@@ -14,7 +14,7 @@ export class CheckoutService {
 
 
   createPaypalCheckout(bookIds: number[]){
-    const returnUrl = 'http://localhost:4200/cart';
+    const returnUrl = environment.paypalReturnUrl;
     return this.http.post<PaypalOrder>(`${environment.apiBase}/checkout/paypal/create?returnUrl=${returnUrl}`, bookIds);
   }
 

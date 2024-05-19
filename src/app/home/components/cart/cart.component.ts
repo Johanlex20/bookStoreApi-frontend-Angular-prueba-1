@@ -23,17 +23,18 @@ export class CartComponent implements OnInit{
 
   ngOnInit(): void {
     const token = this.route.snapshot.queryParamMap.get('token');
+    const payerId = this.route.snapshot.queryParamMap.get('PayerID');
 
-    if(token){
+    if (token && payerId) {
       this.loading = true;
 
       this.checkoutService.capturePaypalCheckout(token)
-      .subscribe(response =>{
-        if(response.completed){
-          this.cartService.clear();
-          this.router.navigate(['/orders/', response.orderId]);
-        }
-      })
+        .subscribe(response => {
+          if (response.completed) {
+            this.cartService.clear();
+            this.router.navigate(['/orders', response.orderId]);
+          }
+        })
     }
   }
 
