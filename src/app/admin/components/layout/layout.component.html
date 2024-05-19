@@ -6,20 +6,24 @@
     </button>
 
     <button mat-button routerLink="/admin/books" class="ms-3">
-        Libros
+        Admin. Libros
     </button>
 
     <button mat-button routerLink="/admin/users" class="ms-3">
-        Usuarios
+        Admin. Usuarios
     </button>
 
     <span class="spacer"></span>
 
-
-    <button mat-button>
-        <mat-icon>account_circle</mat-icon>
+    <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon> {{ user.firstName }}
     </button>
 
+    <mat-menu #userMenu>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon> Cerrar sesión
+        </button>
+    </mat-menu>
 </mat-toolbar>
 
 <div class="container py-5">
